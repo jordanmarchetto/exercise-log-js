@@ -3,11 +3,13 @@ require('dotenv').config();
 const express = require('express');
 const { pool } = require('./db');
 const routes = require('./routes');
+const { logRequest } = require('./middlewares/logging');
 
 const app = express();
 const port = process.env.API_PORT || 3000;
 
 app.use(express.json());
+app.use('/api', logRequest);
 app.use('/api', routes);
 
 app.get('/', (req, res) => {

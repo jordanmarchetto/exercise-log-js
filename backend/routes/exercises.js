@@ -1,10 +1,9 @@
 const router = require('express').Router();
-const { pool } = require('../db');
-
+const exercises = require('../queries/exercises');
 
 router.get('/', async (_req, res) => {
   try {
-    const result = await pool.query('SELECT * from exercises');
+    const result = await exercises.getAllExercises();
     res.json({ exercises: result.rows });
   } catch (error) {
     res.status(500).json({
@@ -16,8 +15,8 @@ router.get('/', async (_req, res) => {
 
 router.get('/:id', async (req, res) => {
   try {
-    const result = await pool.query(`SELECT * from exercises where id = $1`, [req.params.id]); //this is totally safe, right??? right???
-    res.json({ exercises: result.rows });
+    const result = await exercises.getExerciseById(req.params.id);
+    res.json({ ...result.rows[0] });
   } catch (error) {
     res.status(500).json({
       status: 'error',
