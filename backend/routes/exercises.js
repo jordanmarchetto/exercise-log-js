@@ -1,9 +1,6 @@
 const router = require('express').Router();
 const { pool } = require('../db');
 
-//TODO: add logging for every route
-//TODO: move queries to separate file
-//TODO: moar routes
 
 router.get('/', async (_req, res) => {
   try {
