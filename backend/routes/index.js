@@ -5,8 +5,6 @@ router.use('/exercises', require('./exercises'));
 
 module.exports = router;
 
-//TODO: add logging for every route
-//TODO: move queries to separate file
 //TODO: moar routes
 //TODO: abstract error handling
 //TODO: documentation
