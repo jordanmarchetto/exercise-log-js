@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const exercises = require('../queries/exercises');
 const { serializeExercise, serializeExercises } = require('../serializers/exercises');
+const {isNumericId} = require('../validators/common');
 
 router.get('/', async (_req, res) => {
   try {
@@ -17,6 +18,12 @@ router.get('/', async (_req, res) => {
 
 router.get('/:id', async (req, res) => {
   try {
+    if (!isNumericId(req.params.id)) {
+      return res.status(400).json({
+        status: 'error',
+        message: 'Invalid exercise ID'
+      });
+    }
     const result = await exercises.getExerciseById(req.params.id);
     if (!result) {
       return res.status(404).json({
