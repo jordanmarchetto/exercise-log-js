@@ -6,7 +6,6 @@ router.use('/exercises', require('./exercises'));
 module.exports = router;
 
 //TODO: moar routes
-//TODO: documentation
 //TODO: deployment
 
 /*
