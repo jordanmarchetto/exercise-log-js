@@ -1,3 +1,4 @@
+// I let the AI write this.
 module.exports = [
   {
     ignores: ['node_modules/**', '.vscode/**'],
