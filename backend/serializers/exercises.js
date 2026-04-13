@@ -11,15 +11,30 @@
 	"show_on_records": true
 */
 const serializeExercises = (rows) => {
-    return rows.map(serializeExercise);
-}
+  return rows.map(serializeExercise);
+};
 const serializeExercise = (row) => {
-    const { id, name, description, icon, created_at, updated_at, show_on_records } = row;
-    return { id, name, description, icon, created_at, updated_at, show_on_records };
-}
-
+  const {
+    id,
+    name,
+    description,
+    icon,
+    created_at,
+    updated_at,
+    show_on_records,
+  } = row;
+  return {
+    id,
+    name,
+    description,
+    icon,
+    created_at,
+    updated_at,
+    show_on_records,
+  };
+};
 
 module.exports = {
   serializeExercise,
   serializeExercises,
-}
+};

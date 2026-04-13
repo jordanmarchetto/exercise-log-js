@@ -6,7 +6,10 @@ const getAllExercises = async () => {
 };
 
 const getExerciseById = async (id) => {
-  const res = await pool.query('SELECT * FROM exercises WHERE id = $1 limit 1', [id]);
+  const res = await pool.query(
+    'SELECT * FROM exercises WHERE id = $1 limit 1',
+    [id],
+  );
   return res.rows[0];
 };
 
