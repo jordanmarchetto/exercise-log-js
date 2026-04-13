@@ -18,6 +18,7 @@ router.get('/', async (_req, res) => {
 
 router.get('/:id', async (req, res) => {
   try {
+    // extremely basic param validation
     if (!isNumericId(req.params.id)) {
       return res.status(400).json({
         status: 'error',
