@@ -9,6 +9,7 @@ router.get('/', async (req, res) => {
     res.status(500).json({
       status: 'error',
       database: 'disconnected',
+      message: error.message || 'Unable to connect to the database',
     });
   }
 });
