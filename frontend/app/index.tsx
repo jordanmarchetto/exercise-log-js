@@ -3,9 +3,11 @@ import { useEffect, useState } from 'react';
 import {
     ActivityIndicator,
     FlatList,
+    Platform,
     Pressable,
     StyleSheet,
     Text,
+    ToastAndroid,
     View,
 } from 'react-native';
 
@@ -29,6 +31,15 @@ export default function HomeScreen() {
   const [exercises, setExercises] = useState<Exercise[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const showDebugToast = () => {
+    if (Platform.OS === 'android') {
+      ToastAndroid.show('Android toast from React Native', ToastAndroid.SHORT);
+      return;
+    }
+
+    console.log('Android toast button pressed');
+  };
 
   const loadExercises = async () => {
     try {
@@ -66,6 +77,11 @@ export default function HomeScreen() {
           <Text style={styles.subtitle}>
             This screen reads directly from the API and shows the current list of exercises.
           </Text>
+          {Platform.OS === 'android' && (
+            <Pressable style={styles.toastButton} onPress={showDebugToast}>
+              <Text style={styles.toastButtonText}>Show Android Toast</Text>
+            </Pressable>
+          )}
         </View>
       }
       ListEmptyComponent={
@@ -124,6 +140,18 @@ const styles = StyleSheet.create({
     color: '#cbd5e1',
     fontSize: 16,
     lineHeight: 24,
+  },
+  toastButton: {
+    alignSelf: 'flex-start',
+    backgroundColor: '#fb923c',
+    borderRadius: 999,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    marginTop: 6,
+  },
+  toastButtonText: {
+    color: '#0f172a',
+    fontWeight: '800',
   },
   emptyState: {
     minHeight: 160,
