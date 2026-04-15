@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const cors = require('cors');
 const path = require('path');
 const { pool } = require('./db');
 const routes = require('./routes');
@@ -12,6 +13,7 @@ const app = express();
 const port = process.env.API_PORT || 3000;
 const openApiSpec = YAML.load(path.join(__dirname, 'openapi.yaml'));
 
+app.use(cors());
 app.use(express.json());
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(openApiSpec, {
   customSiteTitle: 'exercise-log-js API Docs',
