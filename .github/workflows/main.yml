@@ -20,14 +20,14 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build Docker image
         run: |
-          docker build -t exercise-log-api:latest .
+          docker build -t exercise-log-api:latest ./backend
       - name: Create external docker network
         run: >
           docker network create docker_test_network || echo "Network already
           exists"
       - name: Run Docker container in detached mode
         run: |
-          docker compose up -d
+          docker compose -f ./backend/docker-compose.yml up -d
         env:
           DB_USER: postgres_user
           DB_PASSWORD: postgres_password
@@ -42,7 +42,7 @@ jobs:
           exit 1)
       - name: Stop and remove Docker container
         run: |
-          docker compose down
+          docker compose -f ./backend/docker-compose.yml down
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
