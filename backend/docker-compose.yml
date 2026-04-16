@@ -42,4 +42,5 @@ volumes:
 networks:
   app_backend:
     name: ${DOCKER_NETWORK_BACKEND:-exercise-log-backend}
+    internal: true
 
