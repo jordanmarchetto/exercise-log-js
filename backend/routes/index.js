@@ -7,7 +7,6 @@ module.exports = router;
 
 //TODO: moar routes
 //TODO: deployment
-//TODO: UI
 
 /*
   Routes
