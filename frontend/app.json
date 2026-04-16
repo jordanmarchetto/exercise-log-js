@@ -48,8 +48,9 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "b565a6d2-0bd3-49c0-9586-b96af7ebd766"
+        "projectId": "25220f24-98b1-4ad5-a52a-d8f33c199929"
       }
-    }
+    },
+    "owner": "jordan.marchetto"
   }
 }
