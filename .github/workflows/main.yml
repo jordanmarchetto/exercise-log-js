@@ -51,7 +51,6 @@ jobs:
           tags: |
             jordanmarchetto/exercise-log-api:${{ github.run_number }}
             jordanmarchetto/exercise-log-api:latest
-          context: .
       - name: Create and Push Tag
         run: |
           TAG_NAME="v${{ github.run_number }}"
